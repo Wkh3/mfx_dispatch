@@ -4,7 +4,7 @@ project( libmfx )
 
 # FIXME Adds support for using system/other install of intel media sdk
 find_path ( INTELMEDIASDK_PATH mfx/mfxvideo.h
-  HINTS "${CMAKE_SOURCE_DIR}"
+  HINTS "${CMAKE_CURRENT_SOURCE_DIR}"
 )
 
 if (INTELMEDIASDK_PATH_NOTFOUND)
@@ -59,11 +59,11 @@ add_definitions(
 
 # As this library might be used by ffmpeg, and in vcpkg build pipeline, the .a suffix is not recognized by the linker,
 # thus, we need to rename to .lib. (MSVC toolchain should all need this)
-if (CMAKE_SYSTEM_NAME MATCHES "Windows")
-  configure_file (${CMAKE_SOURCE_DIR}/libmfx.pc.win.cmake ${CMAKE_BINARY_DIR}/libmfx.pc @ONLY)
-else()
-  configure_file (${CMAKE_SOURCE_DIR}/libmfx.pc.cmake ${CMAKE_BINARY_DIR}/libmfx.pc @ONLY)
-endif()
+# if (CMAKE_SYSTEM_NAME MATCHES "Windows")
+#   configure_file (${CMAKE_SOURCE_DIR}/libmfx.pc.win.cmake ${CMAKE_BINARY_DIR}/libmfx.pc @ONLY)
+# else()
+#   configure_file (${CMAKE_SOURCE_DIR}/libmfx.pc.cmake ${CMAKE_BINARY_DIR}/libmfx.pc @ONLY)
+# endif()
 
 
 add_library( mfx STATIC ${SOURCES} )
