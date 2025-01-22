@@ -47,10 +47,13 @@ if (CMAKE_SYSTEM_NAME MATCHES "Windows")
   )
 endif (CMAKE_SYSTEM_NAME MATCHES "Windows")
 
-include_directories(
+target_include_directories(
+  mfx
+  PUBLIC
   ${INTELMEDIASDK_PATH}
   ${INTELMEDIASDK_PATH}/mfx
 )
+
 
 add_definitions(
   -DMFX_VA
