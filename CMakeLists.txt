@@ -47,12 +47,6 @@ if (CMAKE_SYSTEM_NAME MATCHES "Windows")
   )
 endif (CMAKE_SYSTEM_NAME MATCHES "Windows")
 
-target_include_directories(
-  mfx
-  PUBLIC
-  ${INTELMEDIASDK_PATH}
-  ${INTELMEDIASDK_PATH}/mfx
-)
 
 
 add_definitions(
@@ -70,6 +64,14 @@ add_definitions(
 
 
 add_library( mfx STATIC ${SOURCES} )
+
+target_include_directories(
+  mfx
+  PUBLIC
+  ${INTELMEDIASDK_PATH}
+  ${INTELMEDIASDK_PATH}/mfx
+)
+
 
 # As this library might be used by ffmpeg, and in vcpkg build pipeline, mfx.lib won't be recognized by linker,
 # thus, we need to rename to libmfx.lib
