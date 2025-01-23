@@ -49,10 +49,10 @@ endif (CMAKE_SYSTEM_NAME MATCHES "Windows")
 
 
 
-add_definitions(
-  -DMFX_VA
-  -D_LIB
-)
+# add_definitions(
+#   -DMFX_VA
+#   -D_LIB
+# )
 
 # As this library might be used by ffmpeg, and in vcpkg build pipeline, the .a suffix is not recognized by the linker,
 # thus, we need to rename to .lib. (MSVC toolchain should all need this)
